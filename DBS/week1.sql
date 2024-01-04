@@ -1,5 +1,7 @@
- create table student( 
+ create table studentt( 
     name varchar(30),
-    age number(3));
+    age int(3));
 
-select * from student;
+insert into studentt values('Arhaan',45);
+
+select * from studentt;
