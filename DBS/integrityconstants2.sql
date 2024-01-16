@@ -1,2 +1,1 @@
-use Arhaanmain;
-CREATE TABLE 
+drop DATABASE world;
