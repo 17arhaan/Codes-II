@@ -1,1 +1,2 @@
 use Arhaanmain;
+CREATE TABLE 
