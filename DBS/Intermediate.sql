@@ -27,7 +27,9 @@ select course_id from takes where semester = 'Fall' and year = 2009
 MINUS
 select course_id from takes where semester = 'Summer' and year = 2010;
 --4
-select course_id from takes where grade = 'null';
+select title
+from course natural left outer join takes
+where takes.id is null;
 --5
 select distinct course_id
 from takes
