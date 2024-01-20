@@ -43,7 +43,9 @@ where (semester = 'Fall' and year = 2009)
 select distinct name
 from student
 where name in (
-
+    select name
+    from instructor
+    where instructor.name = student.name
   );
 --9
 
