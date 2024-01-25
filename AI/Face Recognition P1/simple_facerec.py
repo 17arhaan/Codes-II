@@ -4,7 +4,7 @@ import os
 import glob
 import numpy as np
 
-class Facerecogn:
+class SimpleFacerec:
     def __init__(self):
         self.known_face_encodings = []
         self.known_face_names = []
@@ -32,7 +32,7 @@ class Facerecogn:
             basename = os.path.basename(img_path)
             (filename, ext) = os.path.splitext(basename)
             # Get encoding
-            img_encoding = face_recognition.face_encodings(rgb_img)[0]
+            img_encoding = face_recognition.face_encodings(rgb_img)
 
             # Store file name and file encoding
             self.known_face_encodings.append(img_encoding)
