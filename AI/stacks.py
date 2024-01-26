@@ -1,17 +1,17 @@
 class Stack:
     def __init__(self):
         self.stackk = []
-    
-    def push(self,item):
+
+    def push(self, item):
         self.stackk.append(item)
-    
+
     def pop(self):
-        return len(self.stack)
-    
+            return self.stackk.pop()
+
     def display(self):
-        for i in range(len(self.stackk)):
-            print(self.stackk[i])
-    
+            print("~~~~")
+            print(f"{self.stackk}")
+            print("~~~~")
 def main():
     stack_object = Stack()
     ch = 0
@@ -28,11 +28,11 @@ def main():
             if popped_item is not None:
                 print(f"{popped_item} popped.\n")
         elif ch == 3:
-            print("The Stack Is :-")
             stack_object.display()
         elif ch == 4:
             print(" --- Exiting ---")
         else:
             print("Try Again..")
+
 if __name__ == "__main__":
     main()

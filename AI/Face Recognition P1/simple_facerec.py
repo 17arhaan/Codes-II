@@ -19,7 +19,7 @@ class SimpleFacerec:
         :return:
         """
         # Load Images
-        images_path = glob.glob(os.path.join(images_path, "*.*"))
+        images_path = glob.glob(os.path.join(images_path, "C:/Users/arhaa/Pictures"))
 
         print("{} encoding images found.".format(len(images_path)))
 
