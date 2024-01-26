@@ -8,7 +8,7 @@ class Graph:
         stack.append(curr)
         return stack
     
-if _name_ == '_main_':
+if __name__ == "__main__":
     vertices = 6
     adList = [[], [], [3], [1], [0, 1], [2, 0]]
     visit = []

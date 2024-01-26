@@ -7,7 +7,7 @@ def cycle(adList, visit, curr):
             return True
     return False
 
-if _name_ == '_main_':
+if __name__ == "__main__":
     vertices = 4
     adList = [[1, 2], [2], [0, 3], [3]]
     order = [2, 0, 1, 3]
