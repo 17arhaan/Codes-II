@@ -1,51 +1,38 @@
-class heap:
-    def __init__(self, vertices):
-        self.array = [[] for x in range(vertices)]
-        self.heapsize = 0
-        self.size = vertices
+def tsp_bfs(graph, start):
+    visited = set([start])
+    queue = [(start, [start], 0)]
 
-    def hpush(self, ele):
-        self.heapsize += 1
-        i = self.heapsize
-        while i > 1 and self.array[i // 2][0] < ele[0]:
-            self.array[i] = self.array[i // 2]
-            i //= 2
-        self.array[i] = ele
-        return
+    while queue:
+        current_city, path, cost = queue.pop(0)
 
-    def hpop(self):
-        ans = self.array[1]
-        parent, child = 1, 2
-        temp = self.array[self.heapsize]
-        self.heapsize -= 1
-        while child <= self.heapsize:
-            if child < self.heapsize and self.array[child][0] < self.array[child + 1][0]:
-                child += 1
-            if temp[0] >= self.array[child][0]:
-                break
-            self.array[parent] = self.array[child]
-            parent, child = child, child * 2
-        self.array[parent] = temp
-        return ans
+        if len(path) == len(graph):
+            path.append(start)
+            cost += graph[current_city][start]
+            return path, cost
+
+        for neighbor in graph[current_city]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                new_path = path + [neighbor]
+                new_cost = cost + graph[current_city][neighbor]
+                queue.append((neighbor, new_path, new_cost))
+
+    return None
 
 
-def bfs(adList, src, vertices):
-    distance = [1000000] * vertices
-    distance[src] = 0
-    queue = heap(vertices)
-    queue.hpush([0, src])
-    visit = []
-    while queue.heapsize > 0:
-        curr = queue.hpop()
-        if curr[1] not in visit:
-            visit.append(curr[1])
-            for x in adList[curr[1]]:
-                if distance[curr[1]] + x[1] < distance[x[0]]:
-                    distance[x[0]] = x[1] + distance[curr[1]]
-                    queue.hpush([distance[x[0]], x[0]])
-    print(distance)
+graph = {
+    'A': {'B': 2, 'C': 3, 'D': 1},
+    'B': {'A': 2, 'C': 4, 'D': 2},
+    'C': {'A': 3, 'B': 4, 'D': 3},
+    'D': {'A': 1, 'B': 2, 'C': 3}
+}
 
+start_city = 'A'
+result = tsp_bfs(graph, start_city)
 
-if __name__ == '__main__':
-    adList = [[[1, 2], [2, 3], [3, 1]], [[0, 2], [2, 4], [3, 2]], [[0, 3], [1, 4], [3, 3]], [[0, 1], [1, 2], [2, 3]]]
-    bfs(adList, 0, 4)
+if result:
+    path, cost = result
+    print(f'TSP Path: {path}')
+    print(f'Total Cost: {cost}')
+else:
+    print('No Hamiltonian cycle found.')
