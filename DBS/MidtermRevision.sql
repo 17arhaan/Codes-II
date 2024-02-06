@@ -113,4 +113,23 @@ select * from num2;
 use midterm;
 
 
+select distinct course_id
+from takes
+where(semester = 'Fall' and year = 2009);
+
+-- select distinct name 
+-- from student
+-- where name in (
+--     select name 
+--     from instructor
+--     where instructor.name = student.name
+-- );
+
+select distinct student.name 
+from student,instructor 
+where student.name = instructor.name;
+
 use University;
+
+
+----------Lab 4
