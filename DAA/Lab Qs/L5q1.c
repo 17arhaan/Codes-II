@@ -77,6 +77,7 @@ int main() {
         addEdge(graph, src, dest);
     }
     topologicalSortDFS(graph);
+    
     topologicalSortSourceRemoval(graph);
     return 0;
 }
