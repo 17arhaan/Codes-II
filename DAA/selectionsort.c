@@ -38,9 +38,10 @@ int main(){
         printf("Enter Element {%d}: ",i+1);
         scanf("%d",&arr[i]);
     }
-    // int n = sizeof(arr);
+    printf("\nNormal Array --->\n");
+    display(arr,size);
     selectionsort(arr,size);
-    printf("Sorted Array ---> \n");
+    printf("\nSorted Array ---> \n");
     display(arr,size);
     return 0;
 }
