@@ -16,6 +16,7 @@ from instructor
 group by dept_name
 having avg(salary) > 42000;
 
+use university;
 select * from course;
 
 
