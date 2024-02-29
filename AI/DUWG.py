@@ -1,4 +1,4 @@
-#Direct Unweighted Graph
+#Directed Unweighted Graph
 class Graph:
     def __init__(self) :
         self.graph = {}
